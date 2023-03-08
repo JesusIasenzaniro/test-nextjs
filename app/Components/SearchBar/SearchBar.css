@@ -1,0 +1,14 @@
+.search-container {
+    width: 50%;
+}
+.search-container input {
+    padding: 0.5rem 1rem 0.5rem 1rem;
+    border: 0.15rem solid #ccc;
+    border-radius: 0.5rem;
+    width: 100%;
+}
+
+.search-container input[type='text']:focus {
+    border: 0.15rem solid rgb(14 165 233);
+    outline: none;
+}
