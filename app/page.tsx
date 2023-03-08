@@ -1,7 +1,12 @@
 import React from 'react';
+import PodcastList from './PodcastList';
 
-const Home = () => {
-    return <div className='text-red-500'>Home</div>;
-};
+function Home() {
+    return (
+        <div>
+            <PodcastList />
+        </div>
+    );
+}
 
 export default Home;

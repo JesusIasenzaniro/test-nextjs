@@ -1,0 +1,13 @@
+.card-image {
+    border-radius: 200px 200px 200px 200px;
+    border: 2px solid #f8f8f8;
+    position: absolute;
+    top: -120px;
+    min-width: 150px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.card-title {
+    margin-top: 60px;
+}
