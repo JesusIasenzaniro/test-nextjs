@@ -53,13 +53,15 @@ function PodcastList() {
             )}
             {podcasts.map((podcast: any) => (
                 <section className='p-20' key={podcast.id.attributes['im:id']}>
-                    <article className='relative'>
-                        <img
-                            className='card-image'
-                            src={podcast['im:image'][2].label}
-                            alt={podcast['im:artist'].label}
-                        />
-                    </article>
+                    <Link href={`podcast/${podcast.id.attributes['im:id']}`}>
+                        <article className='relative'>
+                            <img
+                                className='card-image'
+                                src={podcast['im:image'][2].label}
+                                alt={podcast['im:artist'].label}
+                            />
+                        </article>
+                    </Link>
                     <div className='text-center border-solid border-2 border-slate-50 shadow-md'>
                         <article className='card-title'>
                             <p className='font-bold text-sm'>
