@@ -18,9 +18,13 @@
 .episodes-information,
 .episodes-dateTime {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
 }
 
 .episodes-dateTime {
     width: 230px;
+}
+
+.text {
+    font-size: 14px;
 }

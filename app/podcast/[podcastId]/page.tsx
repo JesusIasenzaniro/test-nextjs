@@ -93,11 +93,11 @@ function PodcastPage({ params: { podcastId } }: PageProps) {
                                         index % 2 === 0 ? '#f5f5f5' : 'white',
                                 }}
                             >
-                                <article className='text-sky-500'>
+                                <article className='text text-sky-500 w-72 '>
                                     {episodes.trackName}
                                 </article>
 
-                                <section className='episodes-dateTime'>
+                                <section className='text episodes-dateTime'>
                                     <article>
                                         {formatISO(
                                             new Date(episodes.releaseDate),
