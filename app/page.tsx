@@ -1,11 +1,14 @@
 import React from 'react';
-import PodcastList from './PodcastList';
+import PodcastList from './Components/PodcastList/PodcastList';
+import SearchBar from './Components/SearchBar/SearchBar';
 
 function Home() {
     return (
-        <div>
+        <main>
+            <SearchBar />
+            {/* @ts-ignore */}
             <PodcastList />
-        </div>
+        </main>
     );
 }
 

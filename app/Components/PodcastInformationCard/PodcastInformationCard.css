@@ -1,17 +1,3 @@
-.podcast {
-    font-size: 12px;
-}
-.author {
-    font-size: 11px;
-}
-.description-title {
-    font-size: 11px;
-}
-.description {
-    font-size: 10px;
-    line-height: 11px;
-}
-
 .episodes-container {
     width: 600px;
 }
