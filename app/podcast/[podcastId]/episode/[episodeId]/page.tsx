@@ -13,7 +13,10 @@ function Episode() {
     return (
         <main className='track-container mt-8 px-8'>
             <PodcastImageCard data={selectedPodcast} />
-            <PoscastTuneCard tuneData={selectedTune} />
+            <PoscastTuneCard
+                tuneData={selectedTune}
+                selectedPodcast={selectedPodcast}
+            />
         </main>
     );
 }
