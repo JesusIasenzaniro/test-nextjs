@@ -7,6 +7,7 @@ import SinglePodcast from '../SinglePodcast/SinglePodcast';
 import './PodcastList.css';
 import { notFound } from 'next/navigation';
 import { Podcast } from '../../../types/typings';
+import Loading from '../Loading/Loading';
 
 function PodcastList() {
     const fetcher = (args: any) => fetch(args).then((res) => res.json());
@@ -55,7 +56,12 @@ function PodcastList() {
         setCount(podcasts.length);
     }, [podcasts]);
 
-    if (isLoading) return <p>Loading...</p>;
+    if (isLoading)
+        return (
+            <section className='text-center'>
+                <Loading />
+            </section>
+        );
     if (!data && error) notFound();
 
     return (
@@ -68,7 +74,6 @@ function PodcastList() {
             {podcasts.map((podcast: any) => (
                 <SinglePodcast
                     podcast={podcast}
-                    data={data}
                     handleSetSelectedPodcast={handleSetSelectedPodcast}
                     key={podcast.id.attributes['im:id']}
                 />

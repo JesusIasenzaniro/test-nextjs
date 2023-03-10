@@ -7,6 +7,7 @@ import PodcastInformationCard from '../../Components/PodcastInformationCard/Podc
 import { PodcastEpisode } from '../../../types/typings';
 import { useGlobalContext } from '../../Context/Context';
 import './page.css';
+import Loading from '../../Components/Loading/Loading';
 type PageProps = {
     params: {
         podcastId: string;
@@ -43,9 +44,14 @@ function PodcastPage({ params: { podcastId } }: PageProps) {
         }
     }, [data]);
 
-    if (isLoading) return <p>Loading...</p>;
+    if (isLoading)
+        return (
+            <section className='text-center'>
+                <Loading />
+            </section>
+        );
 
-    if (Object.keys(selectedPodcast || {}).length === 0 || error) notFound();
+    if (!selectedPodcast) notFound();
     return (
         <main className='info-container mt-8 px-8'>
             <PodcastImageCard data={selectedPodcast} />
