@@ -1,14 +1,13 @@
 import React from 'react';
 import Link from 'next/link';
-import { Podcast, Data } from '../../../types/typings';
+import { Podcast } from '../../../types/typings';
 
 interface IProps {
     podcast: Podcast;
-    data: Data;
     handleSetSelectedPodcast: Function;
 }
 
-function SinglePodcast({ podcast, data, handleSetSelectedPodcast }: IProps) {
+function SinglePodcast({ podcast, handleSetSelectedPodcast }: IProps) {
     return (
         <section className='p-20'>
             <Link href={`podcast/${podcast.id.attributes['im:id']}`}>
@@ -34,7 +33,7 @@ function SinglePodcast({ podcast, data, handleSetSelectedPodcast }: IProps) {
                 <article className='m-2'>
                     <p className='text-sm text-slate-400'>
                         Author:
-                        <span> {data?.feed?.author?.name?.label}</span>
+                        <span> {podcast['im:artist'].label}</span>
                     </p>
                 </article>
             </div>
