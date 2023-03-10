@@ -1,0 +1,12 @@
+.info-container {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+@media (max-width: 992px) {
+    .info-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+}
