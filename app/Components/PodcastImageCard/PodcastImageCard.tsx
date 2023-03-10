@@ -1,8 +1,13 @@
 'use client';
 import React from 'react';
 import './PodcastImageCard.css';
+import { Podcast } from '../../../types/typings';
 
-function PodcastCard({ data }) {
+interface IProps {
+    data: Podcast | null;
+}
+
+function PodcastCard({ data }: IProps) {
     return (
         <section>
             <article className='w-56 border-solid border-2 border-slate-50 shadow-md'>

@@ -2,13 +2,20 @@ import React from 'react';
 import './PodcastInformationCard.css';
 import { formatISO } from 'date-fns';
 import Link from 'next/link';
+import { Podcast, PodcastData } from '../../../types/typings';
+interface IProps {
+    podcastData: PodcastData[];
+    data: PodcastData;
+    selectedPoscast: Podcast;
+    handleSelectedTune: Function;
+}
 
 function PodcastInformationCard({
     podcastData,
     data,
     selectedPoscast,
     handleSelectedTune,
-}) {
+}: IProps) {
     return (
         <section className='episodes-container'>
             <article className='w-full px-4 py-2 text-lg border-solid border-2 border-slate-50 shadow-md'>
@@ -24,7 +31,7 @@ function PodcastInformationCard({
                     <b className='title'>Duration</b>
                 </article>
             </article>
-            {podcastData.map((episodes: any, index) => {
+            {podcastData.map((episodes: any, index: number) => {
                 const totalMilliseconds = episodes.trackTimeMillis;
                 const totalSeconds = Math.floor(totalMilliseconds / 1000);
                 const hours = Math.floor(totalSeconds / 3600);

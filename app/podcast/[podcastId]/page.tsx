@@ -4,8 +4,8 @@ import useSWR from 'swr';
 import { notFound } from 'next/navigation';
 import PodcastImageCard from '../../Components/PodcastImageCard/PodcastImageCard';
 import PodcastInformationCard from '../../Components/PodcastInformationCard/PodcastInformationCard';
-import {} from 'react';
-import AppContext from '../../Context/Context';
+import { PodcastEpisode } from '../../../types/typings';
+import { useGlobalContext } from '../../Context/Context';
 import './page.css';
 type PageProps = {
     params: {
@@ -22,19 +22,19 @@ function PodcastPage({ params: { podcastId } }: PageProps) {
         fetcher,
         { refreshInterval: 86400 }
     );
-    const value = useContext(AppContext);
+    const { selectedPodcast, setSelectedTune } = useGlobalContext();
 
     const handleSelectedTune = useCallback(
-        (tuneId) => {
+        (tuneId: string) => {
             if (podcastData.length > 0) {
                 const findTune = podcastData.find(
-                    (tune) => tune.trackId === tuneId
+                    (tune: PodcastEpisode) => tune.trackId === +tuneId
                 );
 
-                if (findTune) value?.setSelectedTune(findTune);
+                if (findTune) setSelectedTune(findTune);
             }
         },
-        [podcastData, value?.setSelectedTune]
+        [podcastData, setSelectedTune]
     );
 
     useEffect(() => {
@@ -45,15 +45,14 @@ function PodcastPage({ params: { podcastId } }: PageProps) {
 
     if (isLoading) return <p>Loading...</p>;
 
-    if (Object.keys(value?.selectedPodcast || {}).length === 0 || error)
-        notFound();
+    if (Object.keys(selectedPodcast || {}).length === 0 || error) notFound();
     return (
         <main className='info-container mt-8 px-8'>
-            <PodcastImageCard data={value?.selectedPodcast} />
+            <PodcastImageCard data={selectedPodcast} />
             <PodcastInformationCard
                 podcastData={podcastData}
                 data={data}
-                selectedPoscast={value?.selectedPodcast}
+                selectedPoscast={selectedPodcast}
                 handleSelectedTune={handleSelectedTune}
             />
         </main>

@@ -1,7 +1,14 @@
 import React from 'react';
 import Link from 'next/link';
+import { Podcast, Data } from '../../../types/typings';
 
-function SinglePodcast({ podcast, data, handleSetSelectedPodcast }) {
+interface IProps {
+    podcast: Podcast;
+    data: Data;
+    handleSetSelectedPodcast: Function;
+}
+
+function SinglePodcast({ podcast, data, handleSetSelectedPodcast }: IProps) {
     return (
         <section className='p-20'>
             <Link href={`podcast/${podcast.id.attributes['im:id']}`}>
