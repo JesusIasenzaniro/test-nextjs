@@ -1,11 +1,16 @@
 import React from 'react';
 import Link from 'next/link';
 
-function SinglePodcast({ podcast, data }) {
+function SinglePodcast({ podcast, data, handleSetSelectedPodcast }) {
     return (
         <section className='p-20'>
             <Link href={`podcast/${podcast.id.attributes['im:id']}`}>
-                <article className='relative'>
+                <article
+                    className='relative'
+                    onClick={() =>
+                        handleSetSelectedPodcast(podcast.id.attributes['im:id'])
+                    }
+                >
                     <img
                         className='card-image'
                         src={podcast['im:image'][2].label}
