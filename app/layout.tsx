@@ -11,12 +11,30 @@ export default function RootLayout({
 }) {
     const [filter, setFilter] = useState('');
     const [count, setCount] = useState(0);
+    const [podcasts, setPoscasts] = useState([]);
+    const [selectedPodcast, setSelectedPodcast] = useState({});
+    const [selectedData, setSelectedData] = useState({});
+    const [selectedTune, setSelectedTune] = useState({});
+
     return (
         <html lang='en'>
             <body>
                 <Header />
                 <AppContext.Provider
-                    value={{ filter, setFilter, count, setCount }}
+                    value={{
+                        filter,
+                        setFilter,
+                        count,
+                        setCount,
+                        selectedPodcast,
+                        setSelectedPodcast,
+                        podcasts,
+                        setPoscasts,
+                        selectedData,
+                        setSelectedData,
+                        selectedTune,
+                        setSelectedTune,
+                    }}
                 >
                     {children}
                 </AppContext.Provider>
