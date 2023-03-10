@@ -1,0 +1,12 @@
+.track-container {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+@media (max-width: 992px) {
+    .track-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+}
