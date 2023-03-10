@@ -1,18 +1,27 @@
 import React from 'react';
 import './PodcastInformationCard.css';
 import { formatISO } from 'date-fns';
+import Link from 'next/link';
 
-function PodcastInformationCard({ podcastData, data }) {
+function PodcastInformationCard({
+    podcastData,
+    data,
+    selectedPoscast,
+    handleSelectedTune,
+}) {
     return (
         <section className='episodes-container'>
             <article className='w-full px-4 py-2 text-lg border-solid border-2 border-slate-50 shadow-md'>
                 <b>Episodes: {data?.resultCount - 1}</b>
             </article>
-            <article className='mt-8 w-full flex justify-between px-4 py-2  border-solid border-2 border-slate-50 shadow-md text-sm'>
-                <b>Title</b>
-                <article className='w-48 flex justify-between'>
-                    <b>Date</b>
-                    <b>Duration</b>
+            <article className='column-title mt-8  border-solid border-2 border-slate-50 shadow-md text-sm'>
+                <article className='title-container'>
+                    <b className='title'>Title</b>
+                </article>
+
+                <article className='date-time'>
+                    <b className='date-title'>Date</b>
+                    <b className='title'>Duration</b>
                 </article>
             </article>
             {podcastData.map((episodes: any, index) => {
@@ -25,18 +34,26 @@ function PodcastInformationCard({ podcastData, data }) {
                 if (index > 0)
                     return (
                         <section
-                            className='flex justify-between w-full px-4 py-2  border-solid border-2 border-b border-slate-50 shadow-md'
+                            className='tracks-container  px-4 py-2  border-solid border-2 border-b border-slate-50 shadow-md'
                             key={episodes.trackId}
                             style={{
                                 backgroundColor:
                                     index % 2 === 0 ? '#f5f5f5' : 'white',
                             }}
                         >
-                            <article className='text text-sky-500 w-72 '>
-                                {episodes.trackName}
-                            </article>
-
-                            <section className='text episodes-dateTime'>
+                            <Link
+                                href={`podcast/${selectedPoscast.id.attributes['im:id']}/episode/${episodes.trackId}`}
+                            >
+                                <article
+                                    className='text text-sky-500'
+                                    onClick={() =>
+                                        handleSelectedTune(episodes.trackId)
+                                    }
+                                >
+                                    {episodes.trackName}
+                                </article>
+                            </Link>
+                            <section className='episodes-dateTime text'>
                                 <article>
                                     {formatISO(new Date(episodes.releaseDate), {
                                         representation: 'date',
