@@ -51,7 +51,7 @@ function PodcastPage({ params: { podcastId } }: PageProps) {
             </section>
         );
 
-    if (!selectedPodcast) notFound();
+    if (!selectedPodcast || error) notFound();
     return (
         <main className='info-container mt-8 px-8'>
             <PodcastImageCard data={selectedPodcast} />
